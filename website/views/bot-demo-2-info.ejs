@@ -1,0 +1,137 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 2: Silent Discard">Bot Demo 2: Silent Discard</h1>
+    <div class="demo-badge">Demo 2</div>
+</div>
+
+<div class="content-section">
+    <div class="info-card">
+        <h2 data-translate="🎯 Demo Purpose">🎯 Demo Purpose</h2>
+        <p data-translate="This demo showcases the technique of silently discarding comments left by bots while showing them as successfully saved to the bot. The bot believes their spam activity was successful, but it's not actually displayed to other users.">This demo showcases the technique of silently discarding comments left by bots while showing them as successfully saved to the bot. The bot believes their spam activity was successful, but it's not actually displayed to other users.</p>
+    </div>
+
+    <div class="how-it-works">
+        <h2 data-translate="🔧 How It Works">🔧 How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3 data-translate="Comment Submission">Comment Submission</h3>
+                    <p data-translate="User (or bot) submits a comment through the comment form.">User (or bot) submits a comment through the comment form.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3 data-translate="Bot Detection Check">Bot Detection Check</h3>
+                    <p data-translate="Server checks the x-amzn-waf-targeted-bot-detected header.">Server checks the <code>x-amzn-waf-targeted-bot-detected</code> header.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3 data-translate="Conditional Storage">Conditional Storage</h3>
+                    <p data-translate="Bot comments are stored with silent_discard=true flag.">Bot comments are stored with <code>silent_discard=true</code> flag.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3 data-translate="Selective Display">Selective Display</h3>
+                    <p data-translate="Only silent_discard=false comments are shown to normal users.">Only <code>silent_discard=false</code> comments are shown to normal users.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="benefits-section">
+        <h2 data-translate="💡 Benefits of Silent Discard">💡 Benefits of Silent Discard</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">🕵️</div>
+                <h3 data-translate="Bot Deception">Bot Deception</h3>
+                <p data-translate="Bots believe their spam activity was successful and continue attacking the same site.">Bots believe their spam activity was successful and continue attacking the same site.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🛡️</div>
+                <h3 data-translate="User Protection">User Protection</h3>
+                <p data-translate="Real users don't see spam comments.">Real users don't see spam comments.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">📊</div>
+                <h3 data-translate="Data Collection">Data Collection</h3>
+                <p data-translate="Data can be stored to analyze bot behavior patterns.">Data can be stored to analyze bot behavior patterns.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <h3 data-translate="Performance Maintenance">Performance Maintenance</h3>
+                <p data-translate="Saves server resources by not completely blocking bots.">Saves server resources by not completely blocking bots.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-details">
+        <h2 data-translate="⚙️ Technical Implementation">⚙️ Technical Implementation</h2>
+        <div class="code-section">
+            <h3 data-translate="Server-side Logic">Server-side Logic</h3>
+            <pre><code>app.post('/bot-demo-2', (req, res) => {
+    const { commenter, details } = req.body;
+    const isBot = req.headers['x-amzn-waf-targeted-bot-detected'] === 'true';
+    const silentDiscard = isBot ? 1 : 0;
+    
+    // Store bot comments but set silent_discard flag
+    db.run(
+        'INSERT INTO tbl_comments (commenter, details, silent_discard) VALUES (?, ?, ?)',
+        [commenter, details, silentDiscard],
+        function(err) {
+            if (err) {
+                return res.status(500).send('Database error');
+            }
+            // Return success response to bot too
+            res.redirect('/bot-demo-2');
+        }
+    );
+});</code></pre>
+        </div>
+        
+        <div class="code-section">
+            <h3 data-translate="Comment Retrieval Logic">Comment Retrieval Logic</h3>
+            <pre><code>app.get('/bot-demo-2', (req, res) => {
+    const isBot = req.headers['x-amzn-waf-targeted-bot-detected'] === 'true';
+    
+    // Show all comments to bots (including their own)
+    // Show only silent_discard=false comments to normal users
+    let query = 'SELECT * FROM tbl_comments WHERE silent_discard = 0';
+    if (isBot) {
+        query = 'SELECT * FROM tbl_comments';
+    }
+    
+    // ... execute query and render
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="demo-action">
+        <h2 data-translate="🚀 Run Demo">🚀 Run Demo</h2>
+        <p data-translate="Click the button below to experience the comment system. You can see how the experience differs between bots and normal users.">Click the button below to experience the comment system. You can see how the experience differs between bots and normal users.</p>
+        
+        <div class="demo-buttons">
+            <a href="/bot-demo-2" class="btn btn-primary btn-large" data-translate="Run Demo 2">Run Demo 2</a>
+        </div>
+        
+        <div class="info-box">
+            <h4 data-translate="💡 How to Experience">💡 How to Experience</h4>
+            <ul>
+                <li data-translate="Write and submit a comment">Write and submit a comment</li>
+                <li data-translate="If classified as a bot, your comment will be displayed to you but not to other users">If classified as a bot, your comment will be displayed to you but not to other users</li>
+                <li data-translate="Normal users can only see legitimate comments">Normal users can only see legitimate comments</li>
+                <li data-translate="In admin mode, you can view all comments (including bot comments)">In admin mode, you can view all comments (including bot comments)</li>
+            </ul>
+        </div>
+    </div>
+</div>

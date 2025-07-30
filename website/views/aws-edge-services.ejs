@@ -1,0 +1,280 @@
+<div class="page-header">
+    <h1 data-translate="AWS Edge Services">AWS Edge Services</h1>
+    <div class="service-badge">☁️ AWS</div>
+</div>
+
+<div class="content-section">
+    <div class="intro-section">
+        <h2 data-translate="🌐 AWS Edge Services Overview">🌐 AWS Edge Services Overview</h2>
+        <p data-translate="AWS Edge Services are services that provide content delivery, security, and performance optimization through globally distributed edge locations. Here are the main services used in this demo.">AWS Edge Services are services that provide content delivery, security, and performance optimization through globally distributed edge locations. Here are the main services used in this demo.</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card cloudfront">
+            <div class="service-icon">🚀</div>
+            <h3 data-translate="Amazon CloudFront">Amazon CloudFront</h3>
+            <p data-translate="Global Content Delivery Network (CDN) service">Global Content Delivery Network (CDN) service</p>
+            
+            <div class="service-features">
+                <h4 data-translate="Key Features">Key Features</h4>
+                <ul>
+                    <li data-translate="Global Distribution: 400+ edge locations worldwide"><strong>Global Distribution:</strong> 400+ edge locations worldwide</li>
+                    <li data-translate="Caching: Static/dynamic content caching"><strong>Caching:</strong> Static/dynamic content caching</li>
+                    <li data-translate="VPC Origin: Connect to private subnet resources"><strong>VPC Origin:</strong> Connect to private subnet resources</li>
+                    <li data-translate="Functions: Lightweight functions running at the edge"><strong>Functions:</strong> Lightweight functions running at the edge</li>
+                </ul>
+            </div>
+            
+            <div class="demo-usage">
+                <h4 data-translate="Usage in This Demo">Usage in This Demo</h4>
+                <ul>
+                    <li data-translate="Route bot traffic to timeout ALB">Route bot traffic to timeout ALB</li>
+                    <li data-translate="Route /private/* paths to fake websites">Route /private/* paths to fake websites</li>
+                    <li data-translate="Optimize static asset caching">Optimize static asset caching</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-card waf">
+            <div class="service-icon">🛡️</div>
+            <h3 data-translate="AWS WAF (Web Application Firewall)">AWS WAF (Web Application Firewall)</h3>
+            <p data-translate="Firewall service that protects web applications">Firewall service that protects web applications</p>
+            
+            <div class="service-features">
+                <h4 data-translate="Key Features">Key Features</h4>
+                <ul>
+                    <li data-translate="Bot Control: Machine learning-based bot detection"><strong>Bot Control:</strong> Machine learning-based bot detection</li>
+                    <li data-translate="Rate Limiting: Request rate limiting"><strong>Rate Limiting:</strong> Request rate limiting</li>
+                    <li data-translate="Managed Rules: AWS managed security rules"><strong>Managed Rules:</strong> AWS managed security rules</li>
+                    <li data-translate="Custom Rules: User-defined security rules"><strong>Custom Rules:</strong> User-defined security rules</li>
+                </ul>
+            </div>
+            
+            <div class="demo-usage">
+                <h4 data-translate="Usage in This Demo">Usage in This Demo</h4>
+                <ul>
+                    <li data-translate="Detect bot traffic and add headers">Detect bot traffic and add headers</li>
+                    <li data-translate="DDoS protection with Rate-based rules">DDoS protection with Rate-based rules</li>
+                    <li data-translate="Block common attacks with Core Rule Set">Block common attacks with Core Rule Set</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-card alb">
+            <div class="service-icon">⚖️</div>
+            <h3 data-translate="Application Load Balancer">Application Load Balancer</h3>
+            <p data-translate="Layer 7 load balancer service">Layer 7 load balancer service</p>
+            
+            <div class="service-features">
+                <h4 data-translate="Key Features">Key Features</h4>
+                <ul>
+                    <li data-translate="HTTP/HTTPS: Application-level routing"><strong>HTTP/HTTPS:</strong> Application-level routing</li>
+                    <li data-translate="Target Groups: Backend server group management"><strong>Target Groups:</strong> Backend server group management</li>
+                    <li data-translate="Health Checks: Server status monitoring"><strong>Health Checks:</strong> Server status monitoring</li>
+                    <li data-translate="SSL Termination: SSL/TLS certificate handling"><strong>SSL Termination:</strong> SSL/TLS certificate handling</li>
+                </ul>
+            </div>
+            
+            <div class="demo-usage">
+                <h4 data-translate="Usage in This Demo">Usage in This Demo</h4>
+                <ul>
+                    <li data-translate="Normal traffic ALB (alb-origin)">Normal traffic ALB (alb-origin)</li>
+                    <li data-translate="Bot traffic timeout ALB (alb-timeout)">Bot traffic timeout ALB (alb-timeout)</li>
+                    <li data-translate="Integration with Auto Scaling Group">Integration with Auto Scaling Group</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="protection-layers">
+        <h2 data-translate="🔒 Multi-Layer Security Architecture">🔒 Multi-Layer Security Architecture</h2>
+        <div class="layers-diagram">
+            <div class="layer layer-1">
+                <h3 data-translate="1. DDoS Protection">1. DDoS Protection</h3>
+                <p data-translate="Network/transport layer DDoS protection through AWS Shield and CloudFront">Network/transport layer DDoS protection through AWS Shield and CloudFront</p>
+            </div>
+            
+            <div class="layer layer-2">
+                <h3 data-translate="2. Application Layer Attack">2. Application Layer Attack</h3>
+                <p data-translate="Block application attacks like SQL Injection, XSS through AWS WAF Core Rule Set">Block application attacks like SQL Injection, XSS through AWS WAF Core Rule Set</p>
+            </div>
+            
+            <div class="layer layer-3">
+                <h3 data-translate="3. Bot Detection & Mitigation">3. Bot Detection & Mitigation</h3>
+                <p data-translate="Malicious bot detection and various response strategies through AWS WAF Bot Control">Malicious bot detection and various response strategies through AWS WAF Bot Control</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bot-defense-strategies">
+        <h2 data-translate="🤖 Bot Defense Strategies">🤖 Bot Defense Strategies</h2>
+        <div class="strategies-grid">
+            <div class="strategy-card block">
+                <div class="strategy-icon">🚫</div>
+                <h3 data-translate="Block (Blocking)">Block (Blocking)</h3>
+                <p data-translate="Completely block malicious bots to prevent access.">Completely block malicious bots to prevent access.</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4 data-translate="Pros">Pros</h4>
+                        <ul>
+                            <li data-translate="Definite protection">Definite protection</li>
+                            <li data-translate="Resource savings">Resource savings</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4 data-translate="Cons">Cons</h4>
+                        <ul>
+                            <li data-translate="Bots try other methods">Bots try other methods</li>
+                            <li data-translate="False positive possibility">False positive possibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-card challenge">
+                <div class="strategy-icon">🧩</div>
+                <h3 data-translate="Challenge (Challenge)">Challenge (Challenge)</h3>
+                <p data-translate="Distinguish bots through CAPTCHA or JavaScript challenges.">Distinguish bots through CAPTCHA or JavaScript challenges.</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4 data-translate="Pros">Pros</h4>
+                        <ul>
+                            <li data-translate="Accurate distinction">Accurate distinction</li>
+                            <li data-translate="User experience consideration">User experience consideration</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4 data-translate="Cons">Cons</h4>
+                        <ul>
+                            <li data-translate="User inconvenience">User inconvenience</li>
+                            <li data-translate="Advanced bots can bypass">Advanced bots can bypass</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-card count">
+                <div class="strategy-icon">📊</div>
+                <h3 data-translate="Count (Monitoring)">Count (Monitoring)</h3>
+                <p data-translate="Record and analyze bot activity to understand patterns.">Record and analyze bot activity to understand patterns.</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4 data-translate="Pros">Pros</h4>
+                        <ul>
+                            <li data-translate="Data collection">Data collection</li>
+                            <li data-translate="Pattern analysis">Pattern analysis</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4 data-translate="Cons">Cons</h4>
+                        <ul>
+                            <li data-translate="No immediate protection">No immediate protection</li>
+                            <li data-translate="Resource consumption">Resource consumption</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-card deception">
+                <div class="strategy-icon">🎭</div>
+                <h3 data-translate="Deception (Deception)">Deception (Deception)</h3>
+                <p data-translate="Deceive bots by providing false information or making them waste time.">Deceive bots by providing false information or making them waste time.</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4 data-translate="Pros">Pros</h4>
+                        <ul>
+                            <li data-translate="Delay bot activity">Delay bot activity</li>
+                            <li data-translate="Information gathering">Information gathering</li>
+                            <li data-translate="Creative defense">Creative defense</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4 data-translate="Cons">Cons</h4>
+                        <ul>
+                            <li data-translate="Complex implementation">Complex implementation</li>
+                            <li data-translate="Maintenance required">Maintenance required</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-architecture">
+        <h2 data-translate="🏗️ This Demo's Architecture">🏗️ This Demo's Architecture</h2>
+        <div class="architecture-flow">
+            <div class="flow-step">
+                <div class="step-icon">🌐</div>
+                <h3 data-translate="User Request">User Request</h3>
+                <p data-translate="Browser/bot requests website">Browser/bot requests website</p>
+            </div>
+            
+            <div class="flow-arrow">→</div>
+            
+            <div class="flow-step">
+                <div class="step-icon">🚀</div>
+                <h3 data-translate="CloudFront">CloudFront</h3>
+                <p data-translate="Receive and process requests at edge">Receive and process requests at edge</p>
+            </div>
+            
+            <div class="flow-arrow">→</div>
+            
+            <div class="flow-step">
+                <div class="step-icon">🛡️</div>
+                <h3 data-translate="AWS WAF">AWS WAF</h3>
+                <p data-translate="Bot detection and header addition">Bot detection and header addition</p>
+            </div>
+            
+            <div class="flow-arrow">→</div>
+            
+            <div class="flow-step">
+                <div class="step-icon">⚡</div>
+                <h3 data-translate="CloudFront Function">CloudFront Function</h3>
+                <p data-translate="Bot traffic routing decision">Bot traffic routing decision</p>
+            </div>
+            
+            <div class="flow-arrow">→</div>
+            
+            <div class="flow-step">
+                <div class="step-icon">⚖️</div>
+                <h3 data-translate="ALB">ALB</h3>
+                <p data-translate="Route to normal or timeout ALB">Route to normal or timeout ALB</p>
+            </div>
+            
+            <div class="flow-arrow">→</div>
+            
+            <div class="flow-step">
+                <div class="step-icon">💻</div>
+                <h3 data-translate="EC2">EC2</h3>
+                <p data-translate="Node.js application processing">Node.js application processing</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cost-optimization">
+        <h2 data-translate="💰 Cost Optimization">💰 Cost Optimization</h2>
+        <div class="cost-tips">
+            <div class="cost-tip">
+                <h3 data-translate="CloudFront Caching">CloudFront Caching</h3>
+                <p data-translate="Cache static assets at edge to reduce origin server load">Cache static assets at edge to reduce origin server load</p>
+            </div>
+            <div class="cost-tip">
+                <h3 data-translate="WAF Rule Optimization">WAF Rule Optimization</h3>
+                <p data-translate="Activate only necessary rules to save WAF costs">Activate only necessary rules to save WAF costs</p>
+            </div>
+            <div class="cost-tip">
+                <h3 data-translate="Auto Scaling">Auto Scaling</h3>
+                <p data-translate="Optimize EC2 costs with automatic scaling based on traffic">Optimize EC2 costs with automatic scaling based on traffic</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h2 data-translate="🚀 Learn More">🚀 Learn More</h2>
+        <div class="learn-more-buttons">
+            <a href="https://aws.amazon.com/cloudfront/" target="_blank" class="btn btn-primary" data-translate="CloudFront Documentation">CloudFront Documentation</a>
+            <a href="https://aws.amazon.com/waf/" target="_blank" class="btn btn-primary" data-translate="AWS WAF Documentation">AWS WAF Documentation</a>
+            <a href="/" class="btn btn-outline" data-translate="Demo Home">Demo Home</a>
+        </div>
+    </div>
+</div>

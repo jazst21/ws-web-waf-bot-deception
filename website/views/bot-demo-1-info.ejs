@@ -1,0 +1,88 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 1: Forced Timeout">Bot Demo 1: Forced Timeout</h1>
+    <div class="demo-badge">Demo 1</div>
+</div>
+
+<div class="content-section">
+    <div class="info-card">
+        <h2 data-translate="🎯 Demo Purpose">🎯 Demo Purpose</h2>
+        <p data-translate="This demo showcases how to induce timeout by routing bot traffic detected by AWS WAF Bot Control to unreachable origins using CloudFront Function.">This demo showcases how to induce timeout by routing bot traffic detected by AWS WAF Bot Control to unreachable origins using CloudFront Function.</p>
+    </div>
+
+    <div class="how-it-works">
+        <h2 data-translate="🔧 How It Works">🔧 How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3 data-translate="Bot Detection">Bot Detection</h3>
+                    <p data-translate="AWS WAF Bot Control analyzes the request and classifies it as bot traffic.">AWS WAF Bot Control analyzes the request and classifies it as bot traffic.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3 data-translate="Header Addition">Header Addition</h3>
+                    <p data-translate="WAF adds the x-amzn-waf-targeted-bot-detected: true header.">WAF adds the <code>x-amzn-waf-targeted-bot-detected: true</code> header.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3 data-translate="CloudFront Function Execution">CloudFront Function Execution</h3>
+                    <p data-translate="CloudFront Function checks the header and changes the origin with 70% probability.">CloudFront Function checks the header and changes the origin with 70% probability.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3 data-translate="Timeout Induction">Timeout Induction</h3>
+                    <p data-translate="Routing to unreachable ALB causes the bot to experience timeout.">Routing to unreachable ALB causes the bot to experience timeout.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-details">
+        <h2 data-translate="⚙️ Technical Details">⚙️ Technical Details</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3 data-translate="AWS WAF Bot Control">AWS WAF Bot Control</h3>
+                <p data-translate="Machine learning-based bot detection and classification">Machine learning-based bot detection and classification</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-translate="CloudFront Function">CloudFront Function</h3>
+                <p data-translate="Lightweight JavaScript function running at the edge">Lightweight JavaScript function running at the edge</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-translate="VPC Origin">VPC Origin</h3>
+                <p data-translate="Using ALB in private subnet as CloudFront origin">Using ALB in private subnet as CloudFront origin</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-translate="Timeout ALB">Timeout ALB</h3>
+                <p data-translate="ALB configured with inaccessible security groups">ALB configured with inaccessible security groups</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-action">
+        <h2 data-translate="🚀 Run Demo">🚀 Run Demo</h2>
+        <p data-translate="Click the button below to experience the actual demo. Normal users will see a regular page, but bots may experience timeout.">Click the button below to experience the actual demo. Normal users will see a regular page, but bots may experience timeout.</p>
+        
+        <div class="demo-buttons">
+            <a href="/bot-demo-1" class="btn btn-primary btn-large" data-translate="Run Demo 1">Run Demo 1</a>
+        </div>
+        
+        <div class="warning-box">
+            <h4 data-translate="⚠️ Warning">⚠️ Warning</h4>
+            <ul>
+                <li data-translate="If classified as a bot, page loading may be delayed or timeout.">If classified as a bot, page loading may be delayed or timeout.</li>
+                <li data-translate="Regular browser users can view the page normally.">Regular browser users can view the page normally.</li>
+                <li data-translate="CloudFront Function works with 70% probability, so even bots may occasionally see normal pages.">CloudFront Function works with 70% probability, so even bots may occasionally see normal pages.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 3: Dynamic Pricing">Bot Demo 3: Dynamic Pricing</h1>
+    <div class="demo-badge">Demo 3</div>
+</div>
+
+<div class="content-section">
+    <div class="welcome-card">
+        <h2 data-translate="✈️ Flight Pricing Demo">✈️ Flight Pricing Demo</h2>
+        <p data-translate="This demo showcases dynamic pricing techniques where bots are shown inflated prices while legitimate users receive discounted rates. This prevents price scraping and protects revenue while maintaining competitive pricing for real customers.">This demo showcases dynamic pricing techniques where bots are shown inflated prices while legitimate users receive discounted rates. This prevents price scraping and protects revenue while maintaining competitive pricing for real customers.</p>
+        
+        <div class="demo-overview">
+            <h3 data-translate="Demo Purpose">Demo Purpose</h3>
+            <div class="demo-cards">
+                <div class="demo-card">
+                    <div class="demo-icon">💰</div>
+                    <h4 data-translate="Price Protection">Price Protection</h4>
+                    <p data-translate="Bots see inflated prices to prevent price scraping and competitive intelligence gathering.">Bots see inflated prices to prevent price scraping and competitive intelligence gathering.</p>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-icon">🎯</div>
+                    <h4 data-translate="Revenue Protection">Revenue Protection</h4>
+                    <p data-translate="Protects actual pricing strategies while maintaining competitive rates for legitimate users.">Protects actual pricing strategies while maintaining competitive rates for legitimate users.</p>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-icon">🛡️</div>
+                    <h4 data-translate="Competitive Advantage">Competitive Advantage</h4>
+                    <p data-translate="Prevents competitors from gathering accurate pricing data through automated scraping.">Prevents competitors from gathering accurate pricing data through automated scraping.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-explanation">
+            <h3 data-translate="🔍 How It Works">🔍 How It Works</h3>
+            <div class="explanation-grid">
+                <div class="explanation-item">
+                    <h4 data-translate="Normal User Experience">Normal User Experience</h4>
+                    <ul>
+                        <li data-translate="Sees discounted prices with clear savings indicators">Sees discounted prices with clear savings indicators</li>
+                        <li data-translate="Gets competitive rates for legitimate bookings">Gets competitive rates for legitimate bookings</li>
+                        <li data-translate="Enjoys transparent pricing with no hidden fees">Enjoys transparent pricing with no hidden fees</li>
+                    </ul>
+                </div>
+                
+                <div class="explanation-item">
+                    <h4 data-translate="Bot Experience">Bot Experience</h4>
+                    <ul>
+                        <li data-translate="Sees inflated prices (20-40% higher)">Sees inflated prices (20-40% higher)</li>
+                        <li data-translate="No discount indicators or savings shown">No discount indicators or savings shown</li>
+                        <li data-translate="Gathers inaccurate pricing data">Gathers inaccurate pricing data</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h3 data-translate="Technology Implementation">Technology Implementation</h3>
+            <div class="tech-items">
+                <span class="tech-item" data-translate="AWS WAF Bot Control">AWS WAF Bot Control</span>
+                <span class="tech-item" data-translate="Dynamic Pricing Engine">Dynamic Pricing Engine</span>
+                <span class="tech-item" data-translate="Real-time Detection">Real-time Detection</span>
+                <span class="tech-item" data-translate="Price Scraping Protection">Price Scraping Protection</span>
+            </div>
+        </div>
+        
+        <div class="server-logic">
+            <h3 data-translate="Server-side Logic">Server-side Logic</h3>
+            <h4 data-translate="Dynamic Deceptive Pricing Logic">Dynamic Deceptive Pricing Logic</h4>
+            <div class="code-block">
+                <pre><code class="language-javascript" data-show-copy-action="true" data-show-line-numbers="true">
+app.get('/bot-demo-3', async (req, res) => {
+    const isBot = req.headers['x-amzn-waf-targeted-bot-detected'] === 'true';
+
+    // Fetch original pricing data from the database
+    // Example: [{ flight: 'ABC123', price: 200 }, ...]
+    const flights = await db.query('SELECT flight, price FROM tbl_flights');
+
+    let result;
+    if (isBot) {
+        // Inflate prices for bots by 20-40%
+        result = flights.map(flight => {
+            const inflation = 1.2 + Math.random() * 0.2; // 1.2 to 1.4
+            return {
+                flight: flight.flight,
+                price: Math.round(flight.price * inflation)
+            };
+        });
+    } else {
+        // Show original prices to normal users
+        result = flights;
+    }
+
+    res.json(result);
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="getting-started">
+            <h3 data-translate="Getting Started">Getting Started</h3>
+            <p data-translate="Click the button below to experience the flight pricing demo. You'll see different prices based on whether you're detected as a bot or legitimate user.">Click the button below to experience the flight pricing demo. You'll see different prices based on whether you're detected as a bot or legitimate user.</p>
+            <div class="cta-buttons">
+                <a href="/bot-demo-3" class="btn btn-primary" data-translate="Start Flight Demo">Start Flight Demo</a>
+                <a href="/bot-demo-2" class="btn btn-secondary" data-translate="Try Demo 2">Try Demo 2</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="protection-layers">
+        <h2 data-translate="🛡️ Protection Layers">🛡️ Protection Layers</h2>
+        <div class="layers-diagram">
+            <div class="layer layer-1">
+                <h3 data-translate="Bot Detection">Bot Detection</h3>
+                <p data-translate="AWS WAF Bot Control identifies automated traffic patterns and suspicious behavior.">AWS WAF Bot Control identifies automated traffic patterns and suspicious behavior.</p>
+            </div>
+            
+            <div class="layer layer-2">
+                <h3 data-translate="Dynamic Pricing">Dynamic Pricing</h3>
+                <p data-translate="Real-time price adjustments based on user classification and market conditions.">Real-time price adjustments based on user classification and market conditions.</p>
+            </div>
+            
+            <div class="layer layer-3">
+                <h3 data-translate="Revenue Protection">Revenue Protection</h3>
+                <p data-translate="Maintains competitive pricing for legitimate users while protecting against price scraping.">Maintains competitive pricing for legitimate users while protecting against price scraping.</p>
+            </div>
+            
+            <div class="layer layer-4">
+                <h3 data-translate="Competitive Intelligence">Competitive Intelligence</h3>
+                <p data-translate="Prevents competitors from gathering accurate pricing data through automated means.">Prevents competitors from gathering accurate pricing data through automated means.</p>
+            </div>
+        </div>
+    </div>
+</div> 

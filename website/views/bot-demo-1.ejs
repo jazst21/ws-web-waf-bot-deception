@@ -1,0 +1,100 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 1: Execution Result">Bot Demo 1: Execution Result</h1>
+    <div class="demo-badge success">Success</div>
+</div>
+
+<div class="content-section">
+    <div class="result-card">
+        <div class="result-icon">✅</div>
+        <h2><%= message %></h2>
+        <p data-translate="Congratulations! You have successfully reached this page.">Congratulations! You have successfully reached this page.</p>
+    </div>
+
+    <div class="explanation-section">
+        <h2 data-translate="🔍 Result Analysis">🔍 Result Analysis</h2>
+        <p data-translate="Seeing this page means one of the following:">Seeing this page means one of the following:</p>
+        
+        <div class="analysis-grid">
+            <div class="analysis-item normal-user">
+                <div class="analysis-icon">👤</div>
+                <h3 data-translate="Normal User">Normal User</h3>
+                <p data-translate="AWS WAF Bot Control classified your request as normal user traffic.">AWS WAF Bot Control classified your request as normal user traffic.</p>
+            </div>
+            
+            <div class="analysis-item lucky-bot">
+                <div class="analysis-icon">🎲</div>
+                <h3 data-translate="Lucky Bot">Lucky Bot</h3>
+                <p data-translate="Classified as a bot but excluded from CloudFront Function's 70% probability logic and received normal page.">Classified as a bot but excluded from CloudFront Function's 70% probability logic and received normal page.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-info">
+        <h2 data-translate="⚙️ Technical Information">⚙️ Technical Information</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <h3 data-translate="CloudFront Function Logic">CloudFront Function Logic</h3>
+                <pre><code>function handler(event) {
+    var request = event.request;
+    var headers = request.headers;
+    
+    if (headers['x-amzn-waf-targeted-bot-detected'] 
+        && headers['x-amzn-waf-targeted-bot-detected'].value === 'true') {
+        
+        // 70% probability to change to timeout origin
+        if (Math.random() < 0.7) {
+            request.origin = {
+                custom: {
+                    domainName: 'timeout-alb.internal',
+                    port: 80,
+                    protocol: 'http'
+                }
+            };
+        }
+    }
+    
+    return request;
+}</code></pre>
+            </div>
+            
+            <div class="info-item">
+                <h3 data-translate="Bot Detection Mechanism">Bot Detection Mechanism</h3>
+                <ul>
+                    <li data-translate="User-Agent Analysis: Detection of known bot signatures"><strong>User-Agent Analysis:</strong> Detection of known bot signatures</li>
+                    <li data-translate="Behavior Patterns: Analysis of abnormal request patterns"><strong>Behavior Patterns:</strong> Analysis of abnormal request patterns</li>
+                    <li data-translate="IP Reputation: IP addresses known for bot activity"><strong>IP Reputation:</strong> IP addresses known for bot activity</li>
+                    <li data-translate="JavaScript Challenge: Browser environment verification"><strong>JavaScript Challenge:</strong> Browser environment verification</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h2 data-translate="🚀 Next Steps">🚀 Next Steps</h2>
+        <p data-translate="Experience other bot defense techniques:">Experience other bot defense techniques:</p>
+        
+        <div class="next-buttons">
+            <a href="/bot-demo-2-info" class="btn btn-primary" data-translate="Demo 2: Silent Discard">Demo 2: Silent Discard</a>
+            <a href="/aws-edge-services" class="btn btn-secondary" data-translate="Learn AWS Edge Services">Learn AWS Edge Services</a>
+            <a href="/" class="btn btn-outline" data-translate="Return to Home">Return to Home</a>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <h2 data-translate="📊 Real-time Statistics">📊 Real-time Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">~30%</div>
+                <div class="stat-label" data-translate="Probability of bots reaching this page">Probability of bots reaching this page</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">~70%</div>
+                <div class="stat-label" data-translate="Probability of bots experiencing timeout">Probability of bots experiencing timeout</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label" data-translate="Normal user access success rate">Normal user access success rate</div>
+            </div>
+        </div>
+    </div>
+</div>

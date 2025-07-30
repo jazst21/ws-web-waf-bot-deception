@@ -1,0 +1,142 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 3: Flight Pricing">Bot Demo 3: Flight Pricing</h1>
+    <div class="demo-badge">Demo 3</div>
+    <% if (isBot) { %>
+    <div class="bot-indicator" data-translate="🤖 Bot Mode">🤖 Bot Mode</div>
+    <% } %>
+</div>
+
+<div class="content-section">
+    <div class="flight-search-section">
+        <h2 data-translate="✈️ Flight Search Results">✈️ Flight Search Results</h2>
+        
+        <% if (isBot) { %>
+        <div class="bot-info-panel">
+            <h3 data-translate="🤖 Bot-Only Information">🤖 Bot-Only Information</h3>
+            <p data-translate="Bots see inflated prices to prevent price scraping. The prices shown are 20-40% higher than actual rates to protect competitive pricing strategies.">Bots see inflated prices to prevent price scraping. The prices shown are 20-40% higher than actual rates to protect competitive pricing strategies.</p>
+        </div>
+        <% } else { %>
+        <div class="user-info-panel">
+            <h3 data-translate="👤 Normal User Mode">👤 Normal User Mode</h3>
+            <p data-translate="You're seeing discounted prices with clear savings indicators. These are the actual competitive rates available to legitimate customers.">You're seeing discounted prices with clear savings indicators. These are the actual competitive rates available to legitimate customers.</p>
+        </div>
+        <% } %>
+
+        <div class="flights-grid">
+            <% flights.forEach(function(flight) { %>
+            <div class="flight-card <%= isBot ? 'bot-flight' : 'user-flight' %>">
+                <div class="flight-header">
+                    <div class="route-info">
+                        <h3 class="route"><%= flight.route %></h3>
+                        <p class="airline"><%= flight.airline %></p>
+                    </div>
+                    <div class="price-section">
+                        <% if (isBot) { %>
+                        <div class="price bot-price">
+                            <span class="currency">$</span>
+                            <span class="amount"><%= flight.price.toLocaleString() %></span>
+                        </div>
+                        <% } else { %>
+                        <div class="price user-price">
+                            <span class="currency">$</span>
+                            <span class="amount"><%= flight.price.toLocaleString() %></span>
+                            <div class="savings">
+                                <span class="original-price">$<%= flight.originalPrice.toLocaleString() %></span>
+                                <span class="discount-badge">-<%= flight.discount %>%</span>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+                
+                <div class="flight-details">
+                    <div class="flight-time">
+                        <div class="departure">
+                            <span class="time"><%= flight.departure %></span>
+                            <span class="label">Departure</span>
+                        </div>
+                        <div class="duration">
+                            <span class="duration-text"><%= flight.duration %></span>
+                            <div class="flight-line">
+                                <span class="line"></span>
+                                <span class="plane">✈️</span>
+                            </div>
+                        </div>
+                        <div class="arrival">
+                            <span class="time"><%= flight.arrival %></span>
+                            <span class="label">Arrival</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flight-actions">
+                    <button class="btn btn-primary" data-translate="Select Flight">Select Flight</button>
+                    <button class="btn btn-outline" data-translate="View Details">View Details</button>
+                </div>
+                
+                <% if (isBot) { %>
+                <div class="bot-notice">
+                    <small data-translate="⚠️ Bot detected - showing inflated prices">⚠️ Bot detected - showing inflated prices</small>
+                </div>
+                <% } else { %>
+                <div class="user-benefit">
+                    <small data-translate="✅ Legitimate user - showing discounted prices">✅ Legitimate user - showing discounted prices</small>
+                </div>
+                <% } %>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <div class="demo-explanation">
+        <h2 data-translate="🔍 How Dynamic Pricing Works">🔍 How Dynamic Pricing Works</h2>
+        <div class="explanation-grid">
+            <div class="explanation-item">
+                <h3 data-translate="Normal User Experience">Normal User Experience</h3>
+                <ul>
+                    <li data-translate="Sees discounted prices with clear savings">Sees discounted prices with clear savings</li>
+                    <li data-translate="Gets competitive rates for legitimate bookings">Gets competitive rates for legitimate bookings</li>
+                    <li data-translate="Enjoys transparent pricing with savings indicators">Enjoys transparent pricing with savings indicators</li>
+                    <li data-translate="Receives actual market rates">Receives actual market rates</li>
+                </ul>
+            </div>
+            
+            <div class="explanation-item">
+                <h3 data-translate="Bot Experience">Bot Experience</h3>
+                <ul>
+                    <li data-translate="Sees inflated prices (20-40% higher)">Sees inflated prices (20-40% higher)</li>
+                    <li data-translate="No discount indicators or savings shown">No discount indicators or savings shown</li>
+                    <li data-translate="Gathers inaccurate pricing data">Gathers inaccurate pricing data</li>
+                    <li data-translate="Receives false competitive intelligence">Receives false competitive intelligence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-stats">
+        <h2 data-translate="📊 Pricing Statistics">📊 Pricing Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number"><%= flights.filter(f => !isBot).length %></div>
+                <div class="stat-label" data-translate="Discounted Flights">Discounted Flights</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><%= flights.filter(f => isBot).length %></div>
+                <div class="stat-label" data-translate="Inflated Flights">Inflated Flights</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><%= flights.reduce((sum, f) => sum + (isBot ? f.originalPrice - f.price : f.originalPrice - f.price), 0) %></div>
+                <div class="stat-label" data-translate="Total Price Difference">Total Price Difference</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h2 data-translate="🚀 Next Steps">🚀 Next Steps</h2>
+        <div class="next-buttons">
+            <a href="/aws-edge-services" class="btn btn-primary" data-translate="Learn AWS Edge Services">Learn AWS Edge Services</a>
+            <a href="/bot-demo-2" class="btn btn-secondary" data-translate="Try Demo 2">Try Demo 2</a>
+            <a href="/" class="btn btn-outline" data-translate="Return to Home">Return to Home</a>
+        </div>
+    </div>
+</div> 

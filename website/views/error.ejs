@@ -1,0 +1,31 @@
+<div class="page-header">
+    <h1>A server error has occurred</h1>
+    <div class="error-badge">500</div>
+</div>
+
+<div class="content-section">
+    <div class="error-card">
+        <div class="error-icon">⚠️</div>
+        <h2>Temporary Server Error</h2>
+        <p>Sorry. A temporary error has occurred on the server.</p>
+        
+        <div class="error-details">
+            <h3>Error Information:</h3>
+            <code><%= error %></code>
+        </div>
+        
+        <div class="error-suggestions">
+            <h3>Solutions:</h3>
+            <ul>
+                <li>Please try again later</li>
+                <li>Try refreshing the page</li>
+                <li>Contact administrator if the problem persists</li>
+            </ul>
+        </div>
+        
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">Return to Home</a>
+            <a href="javascript:location.reload()" class="btn btn-secondary">Refresh Page</a>
+        </div>
+    </div>
+</div>

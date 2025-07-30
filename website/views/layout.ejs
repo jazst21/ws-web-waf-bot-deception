@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bot Trapper Demo</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://27779c92b2b5.edge.sdk.awswaf.com/27779c92b2b5/028890b891c6/challenge.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Bot Trapper</h2>
+                <p>Demo</p>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">🏠 Home</a></li>
+                <li><a href="/bot-demo-1-info" class="nav-link">🤖 Bot Demo 1 Info</a></li>
+                <li><a href="/bot-demo-1" class="nav-link">⚡ Bot Demo 1</a></li>
+                <li><a href="/bot-demo-2-info" class="nav-link">🤖 Bot Demo 2 Info</a></li>
+                <li><a href="/bot-demo-2" class="nav-link">💬 Bot Demo 2</a></li>
+                <li><a href="/bot-demo-3-info" class="nav-link">🤖 Bot Demo 3 Info</a></li>
+                <li><a href="/bot-demo-3" class="nav-link">✈️ Bot Demo 3</a></li>
+                <li><a href="/aws-edge-services" class="nav-link">☁️ AWS Edge Services</a></li>
+            </ul>            
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <%- body %>
+            </div>
+        </main>
+    </div>
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>

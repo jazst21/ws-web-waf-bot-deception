@@ -1,0 +1,128 @@
+<div class="page-header">
+    <h1 data-translate="Bot Demo 2: Comment System">Bot Demo 2: Comment System</h1>
+    <div class="demo-badge">Demo 2</div>
+    <% if (isBot) { %>
+    <div class="bot-indicator" data-translate="🤖 Bot Mode">🤖 Bot Mode</div>
+    <% } %>
+</div>
+
+<div class="content-section">
+    <div class="comment-form-section">
+        <h2 data-translate="💬 Write Comment">💬 Write Comment</h2>
+        <form action="/bot-demo-2" method="POST" class="comment-form">
+            <div class="form-group">
+                <label for="commenter" data-translate="Name:">Name:</label>
+                <input type="text" id="commenter" name="commenter" required placeholder="Enter commenter name">
+            </div>
+            
+            <div class="form-group">
+                <label for="details" data-translate="Comment:">Comment:</label>
+                <textarea id="details" name="details" required placeholder="Enter comment content" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" data-translate="Save Comment">Save Comment</button>
+        </form>
+    </div>
+
+    <div class="comments-section">
+        <h2 data-translate="📝 Comment List">📝 Comment List</h2>
+        
+        <% if (isBot) { %>
+        <div class="bot-info-panel">
+            <h3 data-translate="🤖 Bot-Only Information">🤖 Bot-Only Information</h3>
+            <p data-translate="Users classified as bots can see all comments (including bot comments). This is to make bots believe their spam activity was successful.">Users classified as bots can see all comments (including bot comments). This is to make bots believe their spam activity was successful.</p>
+        </div>
+        <% } else { %>
+        <div class="user-info-panel">
+            <h3 data-translate="👤 Normal User Mode">👤 Normal User Mode</h3>
+            <p data-translate="Only legitimate comments are shown to normal users. Spam comments written by bots are automatically filtered.">Only legitimate comments are shown to normal users. Spam comments written by bots are automatically filtered.</p>
+        </div>
+        <% } %>
+
+        <div class="comments-list">
+            <% if (comments.length === 0) { %>
+            <div class="no-comments">
+                <div class="no-comments-icon">💭</div>
+                <p>No comments yet. Write the first comment!</p>
+            </div>
+            <% } else { %>
+            <% comments.forEach(function(comment) { %>
+            <div class="comment-item <%= comment.silent_discard ? 'bot-comment' : 'normal-comment' %>">
+                <div class="comment-header">
+                    <div class="comment-author">
+                        <% if (comment.silent_discard) { %>
+                        <span class="bot-badge">🤖</span>
+                        <% } else { %>
+                        <span class="user-badge">👤</span>
+                        <% } %>
+                        <strong><%= comment.commenter %></strong>
+                    </div>
+                    <div class="comment-date">
+                        <%= new Date(comment.created_at).toLocaleString('en-US') %>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <%= comment.details %>
+                </div>
+                <% if (comment.silent_discard && isBot) { %>
+                <div class="comment-status">
+                    <span class="status-badge silent-discard">Silent Discard</span>
+                    <small data-translate="This comment is not shown to normal users">This comment is not shown to normal users</small>
+                </div>
+                <% } %>
+            </div>
+            <% }); %>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="demo-explanation">
+        <h2 data-translate="🔍 How It Works">🔍 How It Works</h2>
+        <div class="explanation-grid">
+            <div class="explanation-item">
+                <h3 data-translate="Normal User Experience">Normal User Experience</h3>
+                <ul>
+                    <li data-translate="Only legitimate comments are displayed">Only legitimate comments are displayed</li>
+                    <li data-translate="Spam comments written by bots are not visible">Spam comments written by bots are not visible</li>
+                    <li data-translate="Maintains a clean comment environment">Maintains a clean comment environment</li>
+                </ul>
+            </div>
+            
+            <div class="explanation-item">
+                <h3 data-translate="Bot Experience">Bot Experience</h3>
+                <ul>
+                    <li data-translate="Their own comments are displayed">Their own comments are displayed</li>
+                    <li data-translate="Believes their spam activity was successful">Believes their spam activity was successful</li>
+                    <li data-translate="Continues attacking the same site">Continues attacking the same site</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-stats">
+        <h2 data-translate="📊 Technical Statistics">📊 Technical Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number"><%= comments.filter(c => !c.silent_discard).length %></div>
+                <div class="stat-label" data-translate="Legitimate Comments">Legitimate Comments</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><%= comments.filter(c => c.silent_discard).length %></div>
+                <div class="stat-label" data-translate="Bot Comments (Silent Discard)">Bot Comments (Silent Discard)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><%= comments.length %></div>
+                <div class="stat-label" data-translate="Total Comments">Total Comments</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-steps">
+        <h2 data-translate="🚀 Next Steps">🚀 Next Steps</h2>
+        <div class="next-buttons">
+            <a href="/aws-edge-services" class="btn btn-primary" data-translate="Learn AWS Edge Services">Learn AWS Edge Services</a>
+            <a href="/bot-demo-1-info" class="btn btn-secondary" data-translate="Try Demo 1">Try Demo 1</a>
+            <a href="/" class="btn btn-outline" data-translate="Return to Home">Return to Home</a>
+        </div>
+    </div>
+</div>
